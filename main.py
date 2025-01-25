@@ -1,12 +1,11 @@
-from window import Line, Point, Window
+from wall import Cell
+from window import Window
 
 
 def main():
     win = Window(800, 600)
-    point1 = Point(0, 100)
-    point2 = Point(200, 100)
-    line = Line(point1, point2)
-    win.draw_line(line, "white")
+    wall = Cell(win, left=False)
+    wall.draw(100, 100, 200, 200)
     win.wait_for_close()
 
 
