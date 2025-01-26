@@ -2,7 +2,7 @@ from window import Line, Point
 
 
 class Cell:
-    def __init__(self, win, left=True, right=True, top=True, bottom=True):
+    def __init__(self, win=None, left=True, right=True, top=True, bottom=True):
         self._win = win
         self.has_left_wall = left
         self.has_right_wall = right
@@ -18,6 +18,8 @@ class Cell:
         p1(x1,y2)  p2(x2, y2)
         p3(x1,y1)  p4(x2, y1)
         """
+        if self._win is None:
+            return
         self._x1 = x1
         self._x2 = x2
         self._y1 = y1
