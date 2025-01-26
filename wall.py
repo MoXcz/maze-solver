@@ -31,20 +31,37 @@ class Cell:
         if self.has_left_wall:
             l = Line(p1, p3)
             self._win.draw_line(l)
+        else:
+            l = Line(p1, p3)
+            self._win.draw_line(l, "black")
+
         if self.has_right_wall:
             l = Line(p2, p4)
             self._win.draw_line(l)
+        else:
+            l = Line(p2, p4)
+            self._win.draw_line(l, "black")
+
         if self.has_top_wall:
             l = Line(p1, p2)
             self._win.draw_line(l)
+        else:
+            l = Line(p1, p2)
+            self._win.draw_line(l, "black")
+
         if self.has_bottom_wall:
             l = Line(p3, p4)
             self._win.draw_line(l)
+        else:
+            l = Line(p3, p4)
+            self._win.draw_line(l, "black")
 
     def draw_move(self, to_cell, undo=False):
         """
         (x1, y1) -> (x2,y2)
         """
+        if self._win is None:
+            return
         if not self._x2 or not self._x1 or not self._y1 or not self._y2:
             raise ValueError("Missing coordiantes for self")
         if not to_cell._x2 or not to_cell._x1 or not to_cell._y1 or not to_cell._y2:
