@@ -23,11 +23,11 @@ class Maze:
         self._reset_cells_visited()
 
     def _create_cells(self):
-        for i in range(self.num_cols):
+        for col in range(self.num_cols):
             self._cells.append([])
-            for j in range(self.num_rows):
-                self._cells[i].append(Cell(self.win))
-                self._draw_cell(i, j)
+            for cell in range(self.num_rows):
+                self._cells[col].append(Cell(self.win))
+                self._draw_cell(col, cell)
 
     def _draw_cell(self, i, j):
         if self.win is None:
@@ -58,10 +58,10 @@ class Maze:
         x = self.num_cols - 1
         y = self.num_rows - 1
 
-        self._cells[0][0].has_top_wall = False
+        self._cells[0][0].has_top_wall = False  # Entrance
         self._draw_cell(0, 0)
 
-        self._cells[x][y].has_bottom_wall = False
+        self._cells[x][y].has_bottom_wall = False  # Exit
         self._draw_cell(x, y)
 
     def _break_walls_r(self, i, j):
@@ -70,13 +70,13 @@ class Maze:
         while True:
             coordinates = []
             if i > 0 and self._cells[i - 1][j].visited is False:
-                coordinates.append([i - 1, j])
+                coordinates.append([i - 1, j])  # left
             if i < self.num_cols - 1 and self._cells[i + 1][j].visited is False:
-                coordinates.append([i + 1, j])
+                coordinates.append([i + 1, j])  # right
             if j > 0 and self._cells[i][j - 1].visited is False:
-                coordinates.append([i, j - 1])
+                coordinates.append([i, j - 1])  # top
             if j < self.num_rows - 1 and self._cells[i][j + 1].visited is False:
-                coordinates.append([i, j + 1])
+                coordinates.append([i, j + 1])  # bottom
 
             if coordinates == []:
                 self._draw_cell(i, j)
@@ -102,6 +102,6 @@ class Maze:
             self._break_walls_r(adjacent_x, adjacent_y)
 
     def _reset_cells_visited(self):
-        for i in range(self.num_cols):
-            for j in range(self.num_rows):
-                self._cells[i][j].visited = False
+        for col in range(self.num_cols):
+            for cell in range(self.num_rows):
+                self._cells[col][cell].visited = False
