@@ -20,6 +20,7 @@ class Maze:
         if seed:
             random.seed(seed)
         self._break_walls_r(0, 0)
+        self._reset_cells_visited()
 
     def _create_cells(self):
         for i in range(self.num_cols):
@@ -99,3 +100,8 @@ class Maze:
                 chosen_cell.has_bottom_wall = False
                 current_cell.has_top_wall = False
             self._break_walls_r(adjacent_x, adjacent_y)
+
+    def _reset_cells_visited(self):
+        for i in range(self.num_cols):
+            for j in range(self.num_rows):
+                self._cells[i][j].visited = False
