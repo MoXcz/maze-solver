@@ -3,12 +3,7 @@
 This program draws a maze graphically, and then solves it using the following
 algorithms:
 - Depth-first search
-- ...
-
-TODO:
-1. Add buttons to slow down or accelerate the algorithm
-2. Add button to choose algorithm
-3. Add more algorithms to solve the maze
+- Breadth-first search
 
 ## Installation
 
@@ -27,3 +22,8 @@ After that just run the program using the Python interpreter:
 ```python
 python3 main.py
 ```
+
+## Use
+
+Using the button, select the speed at which the maze will be generated, then
+select one of the algorithms available to solve the maze.
