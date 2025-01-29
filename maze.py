@@ -5,7 +5,16 @@ import random
 
 class Maze:
     def __init__(
-        self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, win=None, seed=None
+        self,
+        x1,
+        y1,
+        num_rows,
+        num_cols,
+        cell_size_x,
+        cell_size_y,
+        win=None,
+        seed=None,
+        speed=0.05,
     ):
         self.x1 = x1
         self.y1 = y1
@@ -15,6 +24,7 @@ class Maze:
         self.cell_size_y = cell_size_y
         self.win = win
         self._cells = []
+        self.speed = speed
         self._create_cells()
         self._break_entrance_and_exit()
         if seed:
@@ -50,7 +60,7 @@ class Maze:
         if self.win is None:
             return
         self.win.redraw()
-        sleep(0.05)
+        sleep(self.speed)
 
     def _break_entrance_and_exit(self):
         if self._cells == []:
